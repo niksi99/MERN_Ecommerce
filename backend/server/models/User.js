@@ -28,8 +28,18 @@ const UserSchema = new mongoose.Schema({
     Role: {
         type: String,
         default: 'user'
+    },
+    Cart: {
+        type: Array,
+        default: []
+    },
+    Address: {
+        type: String
+    },
+    ListOfProducts: {
+        type: mongoose.Schema.Types.ObjectId, ref: "Product"
     }
-})
+}, { timestamps: true })
 
 UserSchema.pre('save', async function(next) {
     if(!this.isModified('Password'))
