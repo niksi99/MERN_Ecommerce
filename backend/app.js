@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express');
 const body_parser = require('body-parser');
+const cookie_parser = require('cookie-parser');
 const morgan = require('morgan');
 
 const MongoDB_Connect = require('./server/config/MongoDB');
@@ -8,6 +9,7 @@ const app = express()
 
 app.use(morgan("dev"))
 app.use(body_parser.json());
+app.use(cookie_parser());
 MongoDB_Connect();
 
 const AuthRoute = require('./server/routes/AuthRoutes');

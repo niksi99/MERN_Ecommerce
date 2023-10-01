@@ -24,3 +24,13 @@ module.exports.IsAuthenticated = asyncHandler(async(req, res, next) => {
         throw new Error('There is no token to header')
     }
 })
+
+module.exports.IsAdmin = asyncHandler(async(req, res, next) => {
+    const admin = await User.findById(req.user.id);
+    if(admin.Role === 'admin') {
+        next();
+    }
+    else {
+        throw new Error('Not an admin');
+    }
+})

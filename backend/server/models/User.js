@@ -34,10 +34,15 @@ const UserSchema = new mongoose.Schema({
         default: []
     },
     Address: {
-        type: String
+        type: String,
+        default: ""
     },
     ListOfProducts: {
         type: mongoose.Schema.Types.ObjectId, ref: "Product"
+    },
+    RefreshToken: {
+        type: String,
+        default: ""
     }
 }, { timestamps: true })
 
@@ -57,6 +62,14 @@ UserSchema.methods.GenerateJWT = function() {
         {id: this._id, Email: this.Email},
         process.env.JWT_SECRET,
         { expiresIn: 900 }
+    )
+}
+
+UserSchema.methods.GenerateRefreshToken = function() {
+    return jwt.sign(
+        {id: this._id, Email: this.Email},
+        process.env.JWT_SECRET,
+        { expiresIn: 600 }
     )
 }
 
