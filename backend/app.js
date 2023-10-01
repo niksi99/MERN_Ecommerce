@@ -9,6 +9,7 @@ const app = express()
 
 app.use(morgan("dev"))
 app.use(body_parser.json());
+app.use(body_parser.urlencoded({ extended: false }));
 app.use(cookie_parser());
 MongoDB_Connect();
 
