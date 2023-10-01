@@ -43,3 +43,20 @@ module.exports.GetAllCategories = asyncHandler(async(req, res) => {
         throw new Error(error);
     }
 })
+
+module.exports.DeleteACategory = asyncHandler(async(req, res) => {
+    if(req.params === null)
+        throw new Error("Los upit");
+
+
+    const { id }  = req.params;            
+    try {
+        const deleteCategory = await Category.findByIdAndDelete(id);
+        res.json({
+            success: true,
+            deleteCategory
+        })
+    } catch (error) {
+        throw new Error(error);
+    } 
+})

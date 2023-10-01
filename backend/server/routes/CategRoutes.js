@@ -7,4 +7,5 @@ router.post("/addNewCategory", CategoryController.AddNewCategory)
 router.post('/elementalCategories', CategoryController.InsertElementalCategories)
 
 router.get('/getAll', CategoryController.GetAllCategories);
+router.delete('/deleteCategory/:id', CategoryController.DeleteACategory);
 module.exports = router;
