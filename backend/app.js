@@ -13,6 +13,9 @@ app.use(cookie_parser());
 MongoDB_Connect();
 
 const AuthRoute = require('./server/routes/AuthRoutes');
+const ProductRoute = require('./server/routes/ProductRoutes')
+const CategRoute = require('./server/routes/CategRoutes')
+
 const { NotFound, ErrorHandler } = require('./server/middleware/ErrorHandler');
 
 const port = process.env.PORT || 5000;
@@ -22,6 +25,8 @@ app.get("/", (req, res) => {
 })
 
 app.use('/auth', AuthRoute);
+app.use('/product', ProductRoute);
+app.use("/category", CategRoute);
 
 app.use(NotFound)
 app.use(ErrorHandler);

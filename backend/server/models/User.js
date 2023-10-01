@@ -38,7 +38,8 @@ const UserSchema = new mongoose.Schema({
         default: ""
     },
     ListOfProducts: {
-        type: mongoose.Schema.Types.ObjectId, ref: "Product"
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "Product"
     },
     RefreshToken: {
         type: String,
